@@ -1,0 +1,11 @@
+package com.habilmohammed.spring.basics.springin5steps;
+
+public class BinarySearchImpl {
+
+	public int binarySearch(int[] numbers, int numberToSearch) {
+		
+		SortAlgorithm sortAlgorithm = new BubbleSortAlgorithm();
+		return sortAlgorithm.sort();
+		
+	}
+}

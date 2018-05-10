@@ -1,0 +1,21 @@
+package com.habilmohammed.spring.basics.springin5steps;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+import com.habilmohammed.spring.basics.springin5steps.basic.BinarySearchImpl;
+import com.habilmohammed.spring.basics.springin5steps.scope.PersonDao;
+
+@SpringBootApplication
+public class SpringIn5StepsScopeApplication {
+
+	public static void main(String[] args) {
+	
+		ApplicationContext applicationContext = SpringApplication.run(SpringIn5StepsScopeApplication.class, args);
+		
+		PersonDao personDao = applicationContext.getBean(PersonDao.class);
+		PersonDao personDao2 = applicationContext.getBean(PersonDao.class);
+				
+	}
+}

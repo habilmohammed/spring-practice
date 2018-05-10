@@ -1,0 +1,37 @@
+package com.habilmohammed.spring.basics.springin5steps.basic;
+
+import javax.annotation.PostConstruct;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+public class BinarySearchImpl {
+
+	Logger logger = LoggerFactory.getLogger(this.getClass());
+	
+	@Autowired
+	private SortAlgorithm sortAlgorithm;
+	
+	//autowiring via constructor if uncommented, otherwise setter injection
+	/*public BinarySearchImpl(SortAlgorithm sortAlgorithm) {
+		super();
+		this.sortAlgorithm = sortAlgorithm;
+	}*/
+
+	public int binarySearch(int[] numbers, int numberToSearch) {
+		System.out.println(sortAlgorithm);
+		return sortAlgorithm.sort();
+	}
+	
+	@PostConstruct
+	public void postConstruct() {
+		logger.info("Inside post construct!!!");
+	}
+	
+}

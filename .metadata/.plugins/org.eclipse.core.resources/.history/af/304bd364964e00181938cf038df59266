@@ -1,0 +1,19 @@
+package com.habilmohammed.spring.basics.springin5steps;
+
+public class BinarySearchImpl {
+
+	private SortAlgorithm sortAlgorithm;
+	
+	public BinarySearchImpl(SortAlgorithm sortAlgorithm) {
+		super();
+		this.sortAlgorithm = sortAlgorithm;
+	}
+
+
+
+	public int binarySearch(int[] numbers, int numberToSearch) {
+		
+		return sortAlgorithm.sort();
+		
+	}
+}

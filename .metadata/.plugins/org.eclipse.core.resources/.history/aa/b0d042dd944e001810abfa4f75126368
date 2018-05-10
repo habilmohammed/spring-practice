@@ -1,0 +1,9 @@
+package com.habilmohammed.spring.basics.springin5steps;
+
+public class BubbleSortAlgorithm {
+	
+	public int sort() {
+		return 1;
+	}
+
+}

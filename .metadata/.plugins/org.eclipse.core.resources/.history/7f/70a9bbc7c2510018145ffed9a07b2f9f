@@ -1,0 +1,5 @@
+package com.rdalabs.springboot.basics.springbootin10steps;
+
+public class Book {
+
+}
