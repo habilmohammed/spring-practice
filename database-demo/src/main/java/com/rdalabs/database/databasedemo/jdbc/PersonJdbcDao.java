@@ -27,6 +27,7 @@ public class PersonJdbcDao {
 			person.setLocation(rs.getString("location"));
 			person.setBirthDate(rs.getTimestamp("birth_date"));
 			return person;
+			//Testt
 		}
 	}
 	
