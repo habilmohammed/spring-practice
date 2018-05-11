@@ -4,12 +4,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import com.rdalabs.database.databasedemo.jdbc.entity.Person;
+
+import com.rdalabs.database.databasedemo.entity.Person;
 
 @Repository
 public class PersonJdbcDao {
@@ -30,7 +32,7 @@ public class PersonJdbcDao {
 			//Testt
 		}
 	}
-	
+		
 	public List<Person> findAll() {
 		return jdbcTemplate.query(
 				"select * from person", 
