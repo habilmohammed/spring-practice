@@ -3,12 +3,28 @@ package com.rdalabs.rest.webservices.restfulwebservices.user;
 
 import java.util.Date;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
+
+import org.springframework.beans.factory.annotation.Required;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(description="All details about the user. ")  // swagger doc
 public class User {
 
 	private Integer id;
-	
+
+	@Size(min=2, message="name should have min 2 characters")
+	@NotNull(message="name should not be blank")
 	private String name;
 	
+	@Past(message="Birth date should be in the past")
+	@NotNull(message="birth date should not be blank")
+	@ApiModelProperty(notes="Birth date should be in the past")   // swagger doc
 	private Date birthDate;
 	
 	public User() {}

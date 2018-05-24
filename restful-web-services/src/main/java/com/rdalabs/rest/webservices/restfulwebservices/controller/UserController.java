@@ -1,29 +1,33 @@
 /**
  * 
  */
-package com.rdalabs.rest.webservices.restfulwebservices.user;
+package com.rdalabs.rest.webservices.restfulwebservices.controller;
 
 import java.net.URI;
 import java.util.List;
+
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.rdalabs.rest.webservices.restfulwebservices.exception.PostNotFoundException;
 import com.rdalabs.rest.webservices.restfulwebservices.post.Post;
 import com.rdalabs.rest.webservices.restfulwebservices.post.PostDaoService;
+import com.rdalabs.rest.webservices.restfulwebservices.user.User;
+import com.rdalabs.rest.webservices.restfulwebservices.user.UserDaoService;
+import com.rdalabs.rest.webservices.restfulwebservices.user.UserNotFoundException;
 
 /**
  * @author Habil Mohammed
  *
  */
+
 @RestController
 public class UserController {
 
@@ -48,7 +52,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="/users")
-	public ResponseEntity<Object> addUser(@RequestBody User user) {
+	public ResponseEntity<Object> addUser(@Valid @RequestBody User user) {
 		User savedUser = userService.save(user);
 		if (savedUser != null) {
 			URI location = ServletUriComponentsBuilder
@@ -62,6 +66,15 @@ public class UserController {
 		return null;
 	}
 	
+	@RequestMapping(method=RequestMethod.DELETE, value="/users/{id}")
+	public User deleteUserById(@PathVariable int id) {
+		User user = userService.deleteById(id);
+		if (user == null) {
+			throw new UserNotFoundException("id -> "+id);
+		}
+		return user;
+	}
+		
 	@RequestMapping(method=RequestMethod.GET, value="/users/{userid}/posts")
 	public List<Post> getAllPostsOfUser(@PathVariable int userid) {
 		return postService.findPostsByUserId(userid);
